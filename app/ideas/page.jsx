@@ -4,6 +4,11 @@ import styles from './ideas.module.css';
 async function fetchIdeas() {
     const res = await fetch(`http://localhost:3000/api/ideas`);
     const ideas = await res.json();
+
+    if(process.env.APP_ENV === 'dev') {
+        await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+    }
+
     return ideas;
 }
 
