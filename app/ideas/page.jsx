@@ -1,6 +1,14 @@
 import styles from './ideas.module.css';
 
-export default function Ideas() {
+async function fetchIdeas() {
+    const res = await fetch(`http://localhost:3000/api/ideas`);
+    const ideas = await res.json();
+    return ideas;
+}
+
+export default async function Ideas() {
+    const ideas = await fetchIdeas();
+    // console.log( ideas );
     return (
         <main className="main">
             <h3>Ideas</h3>
@@ -30,6 +38,8 @@ export default function Ideas() {
                     </div>
                 </div>
             </div>
+            {/* Va chercher le json à partir de l'api ideas pour l'afficher sur la page */}
+            {JSON.stringify(ideas, null, 2)}
         </main>
     )
 }
