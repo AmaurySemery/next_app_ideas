@@ -8,8 +8,8 @@ export default function Form({ formTitle }) {
 
                 <label htmlFor="description">Idea Description</label>
                 <textarea name="description" id="description" cols="30" rows="5">
-                    <input type="submit" value="Create" className="btn" />
                 </textarea>
+                <input type="submit" value="Create" className="btn" />
             </form>
         </div>
     )
