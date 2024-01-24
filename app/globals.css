@@ -70,6 +70,7 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+    --form-width: 80%;
   }
 }
 
@@ -110,6 +111,45 @@ a {
 
 h3 {
   padding-bottom: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.form-header {
+  width: var(--form-width);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--form-width);
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.form textarea {
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.form .btn {
+  border: none;
+  padding: 10px 5px;
+  border-radius: 3px;
+  margin: 5px 0px;
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
