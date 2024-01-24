@@ -1,3 +1,4 @@
+import Idea from '../components/Idea';
 import styles from './ideas.module.css';
 
 async function fetchIdeas() {
@@ -13,10 +14,7 @@ export default async function Ideas() {
         <main className="main">
             <div className={styles.container}>
             {ideas.length && ideas.map((idea) => (
-                <div className={styles.idea} key={idea.id}>
-                    <div className={styles['idea-title']}>{idea.title}</div>
-                    <div className={styles['idea-description']}>{idea.description}</div>
-                </div>
+                <Idea data={idea} />
             ))}
             </div>
         </main>
