@@ -2,7 +2,7 @@ export default function Form({ formTitle }) {
     return (
         <div className="form-container">
             <h3 className='form-header'>{formTitle}</h3>
-            <form action="form">
+            <form className="form">
                 <label htmlFor="title">Idea Title</label>
                 <input type="text" id="title" />
 
