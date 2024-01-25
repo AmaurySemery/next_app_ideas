@@ -46,12 +46,13 @@ export default function RegisterForm() {
             setEmail('');
             setPassword('');
             setConfirm('');
-            setMessage(`${responseJson.message}`);
+            setMessage(responseJson.message);
             setTimeout(() => {
                 setMessage('')
             }, 4000)
         } else {
-            setMessage('Something went wrong');
+            setHasError(true);
+            setMessage(responseJson.message);
         }
     }
 
@@ -86,7 +87,7 @@ export default function RegisterForm() {
             <div className="pass-eye">
                 <input
                 type={showPassword ? 'text' : 'password'}
-                id="password"
+                id="confirm"
                 value={confirm}
                 onInput={(e) => setConfirm(e.target.value)}
                 />
