@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { NextResponse } from "next/server";
 import { auth } from "./firebase-config";
 
@@ -42,7 +42,44 @@ export async function POST(request) {
     }
 
     if (task === 'login') {
-        // TODO
+        try {
+            const credentials = await signInWithEmailAndPassword(auth, email, password);
+            console.log({loginResponse: credentials});
+    
+            // Login success
+            return NextResponse.json({
+                status: 200,
+                message: `Welcome back ${email}`,
+            });
+        } catch (err) {
+            // Attention ici, l'erreur renvoyée est toujours "auth/invalid-credential" peu importe l'action
+            // L'API avec wrong-password n'existe plus dans firebase
+            // Sujet à creuser
+
+            console.log({serverErrMessage: err.message});
+            // Wrong password
+            if(err.message.includes('auth/invalid-credential')) {
+                return NextResponse.json({
+                    status: 500,
+                    message: 'Login failed. Email or password incorrect',
+                });
+            }
+            
+            // User does not exist
+            if(err.message.includes('auth/user-not-found')) {
+                return NextResponse.json({
+                    status: 500,
+                    message: `No user found with this email: ${email}`,
+                })
+            }
+
+            // Other error
+            console.log({loginError: err});
+            return NextResponse.json({
+                status: 500,
+                message: 'Login Error',
+            })
+        }
     }
 
     return NextResponse.json({status:200, message:'unknown task'});

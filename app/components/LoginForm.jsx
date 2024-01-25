@@ -77,6 +77,7 @@ export default function LoginForm() {
           </form>
         </div>
         No account yet ? <Link href='/register'>Go to Register Page</Link>
+        {message && <div className={hasError ? 'error' : 'ok'}>{message}</div>}
       </>
     );
 }
