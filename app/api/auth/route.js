@@ -1,13 +1,28 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NextResponse } from "next/server";
+import { auth } from "./firebase-config";
 
 export async function POST(request) {
     const { email, password, task } = await request.json();
-    if(task === 'register') {
-        console.log('case - register')
+    if (task === "register") {
+      console.log("case - register");
 
-        // TODO register with Firebase
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-        return NextResponse.json({status:200, message: `account for ${email} created`});
+      console.log({
+        token: credentials.user.accessToken,
+        uuid: credentials.user.uuid,
+      });
+      console.log({ credentials });
+
+      return NextResponse.json({
+        status: 200,
+        message: `account for ${email} created`,
+      });
     }
 
     if (task === 'login') {
