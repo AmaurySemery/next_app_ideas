@@ -121,6 +121,10 @@ h3 {
   font-size: 14px;
 }
 
+.form-container h3 {
+  text-align: center;
+}
+
 .form-header {
   width: var(--form-width);
 }
