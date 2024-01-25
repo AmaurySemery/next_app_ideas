@@ -12,7 +12,7 @@ export default function User() {
     return (
         <>
         {user && <Link href='/profile'>Profile</Link>}
-        {!user && <Link href='/profile'>Register/Login</Link>}
+        {!user && <Link href='/register'>Register/Login</Link>}
         </>
     )
 }

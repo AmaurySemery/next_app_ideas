@@ -50,6 +50,9 @@ export async function POST(request) {
             return NextResponse.json({
                 status: 200,
                 message: `Welcome back ${email}`,
+                email,
+                uid: credentials.user.uid,
+                jwt: credentials.user.accessToken,
             });
         } catch (err) {
             // Attention ici, l'erreur renvoyée est toujours "auth/invalid-credential" peu importe l'action

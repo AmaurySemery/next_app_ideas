@@ -15,5 +15,5 @@ export function AuthContextProvider({ children }) {
         <AuthContext.Provider value={{user, refreshLoginState}}>
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
