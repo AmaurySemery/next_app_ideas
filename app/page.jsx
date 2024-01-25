@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h3>App Ideas</h3>
-      <p>Find your next <Link href="/ideas" >App Idea</Link> right here</p>
+      <p>
+        Find your next <Link href="/ideas">App Idea</Link> right here
+      </p>
     </main>
   );
 }

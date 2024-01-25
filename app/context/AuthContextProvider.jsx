@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
 import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-    const [user, setUser] = useState();
+  const [user, setUser] = useState();
 
-    function refreshLoginState(data) {
-        setUser(data);
-    }
+  function refreshLoginState(data) {
+    setUser(data);
+  }
 
-    return (
-        <AuthContext.Provider value={{user, refreshLoginState}}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ user, refreshLoginState }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
