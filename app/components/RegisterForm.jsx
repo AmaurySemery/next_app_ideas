@@ -32,7 +32,7 @@ export default function RegisterForm() {
             setMessage(`${responseJson.message}`);
             setTimeout(() => {
                 setMessage('')
-            }, 2000)
+            }, 4000)
         } else {
             setMessage('Something went wrong');
         }
@@ -59,6 +59,7 @@ export default function RegisterForm() {
             <input type="submit" value="Create" className="btn" />
           </form>
         </div>
+        {message && <div>{message}</div>}
       </>
     );
 }
