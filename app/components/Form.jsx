@@ -6,9 +6,23 @@ export default function Form({ formTitle, addIdea }) {
     const [ideaTitle, setIdeaTitle] = useState('');
     const [ideaDescription, setIdeaDescription] = useState('');
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        addIdea(ideaTitle, ideaDescription);
+
+        const URL = 'http://localhost:3000/api/ideas';
+        const data = { title: ideaTitle, description: ideaDescription};
+        const options = {
+            method: 'POST',
+            headers: {
+                // On envoie du JSON
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+        const response = await fetch(URL, options);
+        const result = await response.json();
+        console.log({resultFromClient: result});
+        return result;
     }
 
     return (
