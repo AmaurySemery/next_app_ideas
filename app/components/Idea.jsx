@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '../ideas/ideas.module.css';
 
 export default function Idea({data}) {
@@ -6,6 +7,7 @@ export default function Idea({data}) {
         <div className={styles.idea} key={id}>
             <div className={styles['idea-title']}>{title}</div>
             <div className={styles['idea-description']}>{description}</div>
+            <Link className={styles.lnk} href={`/ideas/${id}`}>Show details</Link>
         </div>
     )
 }
