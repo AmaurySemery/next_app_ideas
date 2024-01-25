@@ -97,7 +97,7 @@ export default function RegisterForm() {
             <input type="submit" value="Create" className="btn" />
           </form>
         </div>
-        {message && <div>{message}</div>}
+        {message && <div className={hasError ? 'error' : 'ok'}>{message}</div>}
       </>
     );
 }

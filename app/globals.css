@@ -171,3 +171,11 @@ h3 {
 .pass-eye svg {
   cursor: pointer;
 }
+
+.error {
+  color: red;
+}
+
+.ok {
+  color: green;
+}
